@@ -2,7 +2,6 @@
 import os
 # ---------------------------------> read book file
 def read_book (filepath):
-    filepath = os.path.expanduser(filepath)
     with open(filepath) as file:
         file_contents = file.read()
     return file_contents
@@ -12,7 +11,6 @@ def count_words (filepath):
     return len(words)
 # ---------------------------------> count characters
 def count_individual_chars (filepath):
-    filepath = os.path.expanduser(filepath)
     book = read_book(filepath).lower()
     chars_dict = {}
     for char in book:
@@ -22,9 +20,14 @@ def count_individual_chars (filepath):
             chars_dict[char] = 1
     return chars_dict
 # ---------------------------------> sorting function
-def sort_dict(chars_dict):
-
-    return
+def sort_it_out(dict):
+    dict_to_list = []
+    for key, value in dict.items():
+        dict_to_list.append({"key": key, "value" : value})
+    def sort_value(dict):
+        return dict["value"]
+    dict_to_list.sort(reverse=True, key=sort_value)
+    return dict_to_list
 # ---------------------------------> Test the function
 def test():
     path = os.path.expanduser("~/Documents/Studies/Coding/Boot.Dev/github.com/bookbot/books/frankenstein.txt")
