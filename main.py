@@ -6,7 +6,10 @@ import sys
 # ---------------------------------> main function
 def main ():
 
-    try:
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
         filepath = sys.argv[1]
         num_words = count_words(filepath)
         chars = count_individual_chars(filepath)
@@ -21,6 +24,4 @@ def main ():
             if char.isalpha():
                 print(f"{char}: {number}")
         print("============= END ===============")
-    except Exception as e:
-        print(f"{e}!\nUsage: python3 main.py <path_to_book>")
 main()
